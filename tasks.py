@@ -28,12 +28,11 @@ def run_crawler(url):
                 for skill in skills:
                     try:
                         visa_id, visa_title = skill.split(" - ", 1)
-                        if visa_id in processed_data:
-                            job_list = processed_data[visa_id]["Jobs"]
+                        if skill in processed_data:
+                            job_list = processed_data[skill]["Jobs"]
                             job_list.append(job_title)
                         else:
-                            processed_data[visa_id] = {
-                                "Visa title": visa_title,
+                            processed_data[skill] = {
                                 "Jobs": [job_title],
                             }
                     except ValueError as e:
@@ -76,10 +75,9 @@ def run_crawler(url):
         os.makedirs(output_dir, exist_ok=True)
 
         for visa_id, data in processed_data.items():
-            filename = os.path.join(output_dir, f"{visa_id}_{data['Visa title']}.txt")
+            filename = os.path.join(output_dir, f"{visa_id[:90]}.txt")
             with open(filename, "w") as file:
-                file.write(f"Visa ID: {visa_id}\n")
-                file.write(f"Visa Title: {data['Visa title']}\n")
+                file.write(f"Visa Type: {visa_id}\n")
                 file.write("Jobs:\n")
                 for job in data["Jobs"]:
                     file.write(f"- {job}\n")

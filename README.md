@@ -6,8 +6,8 @@ This project is aimed at crawling job visa information related to Australia. It 
 
 To use this project, you need to install all the required libraries listed in the `requirements.txt` file. You can do this using the following command:
 
-pip install -r requirements.txt
-
+`pip install -r requirements.txt
+`
 
 
 ## Usage
@@ -16,17 +16,19 @@ pip install -r requirements.txt
 
 To run the Celery worker for executing tasks, use the following command:
 
-celery -A celery_app worker --loglevel=info
-
+`celery -A celery_app worker --loglevel=info
+`
 
 This command starts a Celery worker that listens for tasks to be executed.
+
+
 
 ### Running the Crawler Task
 
 To run the crawler task, use the following command:
 
-python run_crawler.py
-
+`python run_crawler.py
+`
 
 This command executes the crawler task, which initiates the process of scraping job visa information from the specified website.
 
